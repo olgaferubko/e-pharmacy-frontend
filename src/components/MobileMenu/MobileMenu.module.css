@@ -1,0 +1,110 @@
+.menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100dvh;
+    width: 56%;
+    max-width: 334px;
+    background: #59b17a;
+    padding: 260px 0px 40px;
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+    box-shadow: -12px 0 24px rgba(0, 0, 0, 0.15);
+    animation: slideIn 0.3s ease-out;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+.menuClose {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    border: none;
+    position: absolute;
+    top: 39px;
+    right: 28px;
+    padding: 0;
+}
+
+.menuCloseIcon {
+    width: 32px;
+    height: 32px;
+    stroke: #fff;
+}
+
+.navMobile {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    min-height: 136px;
+}
+
+.navLink {
+    background: #fff;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1;
+    color: #93939a;
+    border: 7px solid #fff;
+    border-radius: 24px;
+    padding: 8px 18px;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 0 0 1px #f1f1f1, 0 1px 2px rgba(0, 0, 0, .06);
+}
+
+.navLinkActive {
+    background: #59b17a;
+    color: #fff;
+}
+
+.navMobile::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 15px;
+    background: #fff;
+    transform: translateX(-50%);
+    border: 1px solid #f1f1f1;
+    z-index: 1;
+}
+
+.authMobile {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (min-width: 768px) {
+    .menu {
+        padding: 350px 0px 64px;
+    }
+
+    .menuClose {
+        right: 32px;
+    }
+
+    .authMobile {
+        flex-direction: row;
+    }
+}

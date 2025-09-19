@@ -1,0 +1,21 @@
+.btn {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1;
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+}
+
+.green {
+    color: #f1f1f1;
+}
+
+.white {
+    color: #59b17a;
+}
+
+.white:hover {
+    color: #3f945f;
+}
+

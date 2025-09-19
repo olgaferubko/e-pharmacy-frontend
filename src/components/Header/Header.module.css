@@ -1,0 +1,145 @@
+.header {
+    padding: 28px 20px ;
+}
+
+.headerHome {
+    background: #59b17a;
+    
+}
+
+.headerDefault {
+    background: #f7f8fa;
+}
+
+.headerContainer {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.logo {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.logoIcon {
+    width: 32px;
+    height: 32px;
+}
+
+.logoHome {
+    color: #fff;
+}
+
+.logoDefault {
+    color: #59b17a;
+}
+
+.logoDefault:hover {
+    color: #3f945f;
+}
+
+.logoText {
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: -0.03em;
+    display: flex;
+    align-items: center;
+}
+
+.logoTextHome {
+    color: #fff;
+}
+
+.logoTextDefault {
+    color: #1d1e21;
+}
+
+.nav {
+    display: none;
+    }
+
+.auth {
+    display: none;
+}
+
+.burger  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.burgerIcon {
+    width: 32px;
+    height: 26px;
+    
+}
+
+.burgerIconLight {
+    stroke: #fff;
+}
+
+.burgerIconDark {
+    stroke: #59b17a;
+}
+
+
+@media (min-width: 1280px) {
+    .burger,
+    .menu {
+        display: none;
+    }
+    
+    .nav {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+    
+    .navLink {
+        background: #fff;
+        font-family: "Inter", sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1;
+        color: #93939a;
+        border: 7px solid #fff;
+        border-radius: 24px;
+        padding: 8px 18px;
+        position: relative;
+        z-index: 2;
+        box-shadow: 0 0 0 1px #f1f1f1, 0 1px 2px rgba(0, 0, 0, .06);
+    }
+    
+    .navLinkActive {
+        background: #59b17a;
+        color: #fff;
+    }
+    
+    .nav::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 15px;
+    transform: translateY(-50%);
+    background: #fff;
+    border: 1px solid #f1f1f1;
+    border-radius: 8px;
+    z-index: 1;
+    }
+
+    .auth {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+}

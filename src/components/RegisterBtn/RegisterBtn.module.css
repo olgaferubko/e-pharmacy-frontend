@@ -1,0 +1,42 @@
+.btn {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1;
+    border-radius: 60px;
+    width: 119px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.green {
+    color: #f1f1f1;
+    border: 1px solid rgba(241, 241, 241, 0.5);
+    background: #59b17a;
+}
+
+.green:hover {
+    background: #3f945f;
+    border: none;
+}
+
+.white {
+    color: #59b17a;
+    border: 1px solid rgba(89, 177, 122, 0.5);
+    background: transparent;
+}
+
+.white:hover {
+    color: #fff;
+    border: none;
+    background: #59b17a;
+}
+
+@media (min-width: 768px) {
+    .btn {
+        width: 119px;
+        height: 46px;
+    }
+}
