@@ -13,7 +13,7 @@ const Header = ({ isLoggedIn = false, onLogout = () => {} }) => {
 
   const isHome = pathname === "/";
   const bgClass = isHome ? s.headerHome : s.headerDefault;
-  const logoClass = isHome ? s.logoHome : s.logoDefault;
+   const logoSrc = isHome ? "/logo.svg" : "/logo-green.svg";
   const logoTextClass = isHome ? s.logoTextHome : s.logoTextDefault;
   const variant = isHome ? "green" : "white";
   const toggleMenu = () => setIsMenuOpen(v => !v);
@@ -24,9 +24,11 @@ const Header = ({ isLoggedIn = false, onLogout = () => {} }) => {
     <header className={`${s.header} ${bgClass}`}>
       <div className={s.headerContainer}>
         <Link to="/" className={s.logo}>
-          <svg className={`${s.logoIcon} ${logoClass}`}>
-            <use href="/icons.svg#logo" />
-          </svg>
+          <img
+            src={logoSrc}
+            alt="E-Pharmacy"
+            className={s.logoIcon}
+          />
           <span className={`${s.logoText} ${logoTextClass}`}>E-Pharmacy</span>
         </Link>
 
