@@ -25,7 +25,7 @@ const Header = ({ isLoggedIn = false, onLogout = () => {} }) => {
       <div className={s.headerContainer}>
         <Link to="/" className={s.logo}>
           <svg className={`${s.logoIcon} ${logoClass}`}>
-            <use href="/logo.svg" />
+            <use href="/icons.svg#logo" />
           </svg>
           <span className={`${s.logoText} ${logoTextClass}`}>E-Pharmacy</span>
         </Link>
