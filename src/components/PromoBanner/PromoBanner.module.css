@@ -1,0 +1,131 @@
+.wrapper {
+    background: #f7f8fa;
+    padding: 40px 20px;
+}
+
+.wrap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+    margin: 0 auto;
+    width: 280px;
+    box-sizing: content-box;
+}
+
+.card {
+    position: relative;
+    padding: 14px 18px;
+    box-shadow: 0 -1px 14px 0 rgba(29, 30, 33, 0.02);
+    background: #fdfdfd;
+    border: 1.15px solid #f1f1f1;
+    border-radius: 27px;
+    width: 280px;
+}
+
+.titleContainer {
+    display: flex;
+    align-items: center;
+    margin-bottom: 14px;
+    gap: 14px;
+}
+
+.badge {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: rgba(231, 241, 237, 0.4);
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1;
+    text-align: center;
+    color: #59b17a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    display: flex;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.4;
+    color: #252539;
+}
+
+.valueConatiner {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.value {
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.4;
+    color: #252539;
+}
+
+.cta {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 1.4;
+    color: #93939a;
+}
+
+.cta:hover {
+    color: #6b7280;
+}
+
+@media (min-width: 375px) {
+    .wrap {
+        width: 335px;
+    }
+
+    .card {
+        width: 335px;
+    }
+}
+
+@media (min-width: 768px) {
+    .wrapper {
+        padding: 64px 49px 60px;
+    }
+
+    .wrap {
+        gap: 28px;
+        width: 670px;
+    }
+
+    .card {
+        width: 321px;
+    }
+
+    .badge {
+        width: 74px;
+        height: 74px;
+        font-size: 28px;
+    }
+
+    .title {
+        font-size: 20px;
+    }
+
+    .valueConatiner {
+        gap: 28px;
+    }
+
+    .value {
+        font-size: 36px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .wrap {
+        width: 1019px;
+    }
+}
