@@ -1,10 +1,9 @@
 .header {
-    padding: 28px 20px ;
+    padding: 25px 20px 0;
 }
 
 .headerHome {
     background: #59b17a;
-    
 }
 
 .headerDefault {
@@ -14,7 +13,7 @@
 .headerContainer {
     display: flex;
     justify-content: space-between;
-    padding: 0 20px;
+    padding: 0;
 }
 
 .logo {
@@ -73,8 +72,18 @@
     stroke: #59b17a;
 }
 
+@media (min-width: 768px) {
+    .header {
+        padding: 28px 32px 0;
+    }
+}
+
 
 @media (min-width: 1280px) {
+    .header {
+        padding: 28px 128px 0;
+    }
+    
     .burger,
     .menu {
         display: none;
