@@ -236,11 +236,21 @@
 
 @media (min-width: 1280px) {
     .list {
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 1440px) { 
+    .section {
+        padding: 60px 96px;
+    }
+
+    .list {
         width: 1248px;
         margin: 0 auto;
         gap: 38px 36px;
     }
-
+    
     .card {
         width: 392px;
     }
