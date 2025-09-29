@@ -95,6 +95,15 @@
     max-width: 1184px;
 }
 
+.copy {
+    position: relative;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 1;
+    color: #f7f8fa;
+}
+
 .legal {
     display: flex;
     align-items: flex-start;
@@ -125,15 +134,6 @@
     width: 1px;
     height: 10px;
     transform: translateY(-50%);
-}
-
-.copy {
-    position: relative;
-    font-family: "Inter", sans-serif;
-    font-weight: 400;
-    font-size: 10px;
-    line-height: 1;
-    color: #f7f8fa;
 }
 
 @media (min-width: 768px) {
@@ -187,6 +187,11 @@
         margin: 0 auto;
     }
 
+    .copy {
+        font-size: 14px;
+        line-height: 1.28571;
+    }
+
     .legal {
         max-width: 591px;
         margin: 0 auto;
@@ -202,11 +207,6 @@
 
     .legal li+li::before {
         height: 20px;
-    }
-
-    .copy {
-        font-size: 14px;
-        line-height: 1.28571;
     }
 }
 
