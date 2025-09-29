@@ -3,6 +3,7 @@ import PromoBanner from "../../components/PromoBanner/PromoBanner";
 import NearestStores from "../../components/NearestStores/NearestStores";
 import AddPharmacyPromo from "../../components/AddPharmacyPromo/AddPharmacyPromo";
 import ReviewsSection from "../../components/Reviews/Reviews";
+import Footer from "../../components/Footer/Footer";
 import s from "./HomePage.module.css";
 
 export default function HomePage() {
@@ -13,6 +14,7 @@ export default function HomePage() {
       <NearestStores />
       <AddPharmacyPromo />
       <ReviewsSection />
+      <Footer />
     </section>
   );
 }
