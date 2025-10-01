@@ -2,7 +2,7 @@ import * as yup from "yup";
 
 const phoneReg = /^(\+)?([0-9\s\-()]){10,15}$/;
 
-export const signupSchema = yup.object({
+export const registerSchema = yup.object({
   name: yup
     .string()
     .trim()
@@ -17,7 +17,7 @@ export const signupSchema = yup.object({
   phone: yup
     .string()
     .trim()
-    .optional()
+    .required("Phone is required")
     .test("phone", "Invalid phone number", (v) => !v || phoneReg.test(v)),
   password: yup
     .string()

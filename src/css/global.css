@@ -9,10 +9,3 @@ body {
 body.ReactModal__Body--open {
     overflow: hidden;
 }
-
-
-input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
-    -webkit-text-fill-color: #252539 !important;
-    transition: background-color 5000s ease-in-out 0s;
-}

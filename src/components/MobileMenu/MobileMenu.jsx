@@ -12,7 +12,7 @@ const navLinkClass = ({ isActive }) =>
     <div id="mobile-menu" className={s.menu}>
       <button className={s.menuClose} onClick={onClose} aria-label="Close menu">
         <svg className={s.menuCloseIcon}>
-          <use href="/icons.svg#close" />
+          <use href="/icons.svg#cross" />
         </svg>
       </button>
 

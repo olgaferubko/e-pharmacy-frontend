@@ -2,8 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 import { register, logIn, logOut, refresh } from "./operations";
 
 const initialState = {
-  user: null,         
-  token: null,      
+  user: null,
+  token: null,
   isLoggedIn: false,
   isRefreshing: false,
   loading: false,
@@ -15,7 +15,6 @@ const authSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-
     builder
       .addCase(register.pending, (state) => {
         state.loading = true;
@@ -31,7 +30,6 @@ const authSlice = createSlice({
         state.loading = false;
         state.error = payload || error.message;
       });
-
 
     builder
       .addCase(logIn.pending, (state) => {
@@ -49,7 +47,6 @@ const authSlice = createSlice({
         state.error = payload || error.message;
       });
 
- 
     builder
       .addCase(logOut.pending, (state) => {
         state.loading = true;
@@ -69,7 +66,6 @@ const authSlice = createSlice({
         state.isLoggedIn = false;
       });
 
-
     builder
       .addCase(refresh.pending, (state) => {
         state.isRefreshing = true;
@@ -77,13 +73,14 @@ const authSlice = createSlice({
       })
       .addCase(refresh.fulfilled, (state, { payload }) => {
         state.isRefreshing = false;
-        state.user = payload.user;
+        if (payload.user) state.user = payload.user;
         if (payload.token) state.token = payload.token;
-        state.isLoggedIn = Boolean(state.user && (state.token || true));
+        state.isLoggedIn = Boolean(state.token); 
       })
       .addCase(refresh.rejected, (state, { payload, error }) => {
         state.isRefreshing = false;
-        state.error = (typeof payload === "string" && payload) || error?.message || null;
+        state.error =
+          (typeof payload === "string" && payload) || error?.message || null;
         state.user = null;
         state.token = null;
         state.isLoggedIn = false;
