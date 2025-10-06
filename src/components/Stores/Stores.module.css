@@ -38,6 +38,11 @@
     border: 1.15px solid #f1f1f1;
     border-radius: 27px;
     background: #e7f1ed;
+    transition: box-shadow 0.2s ease;
+}
+
+.card:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
 }
 
 .decor {
