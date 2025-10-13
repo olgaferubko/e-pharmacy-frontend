@@ -12,7 +12,7 @@ export default function ProductPage() {
     async function fetchProduct() {
       try {
         const { data } = await axios.get(
-          `https://e-pharmacy-backend.onrender.com/api/products/${id}`
+          `https://e-pharmacy-backend-bad9.onrender.com/api/products/${id}`
         );
         setProduct(data.data);
       } catch (err) {

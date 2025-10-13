@@ -13,8 +13,9 @@
 .photo {
     border: 1.15px solid rgba(89, 177, 122, 0.6);
     border-radius: 20px;
-    object-fit: contain;
+    object-fit: cover;
     margin-bottom: 8px;
+    width: 100%;
 }
 
 .wrapper {
