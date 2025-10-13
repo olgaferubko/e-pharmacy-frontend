@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import s from "./MedicineItem.module.css";
 
@@ -25,7 +26,7 @@ export default function MedicineItem({ item }) {
             <button className={s.addBtn} onClick={handleAddToCart}>
                 Add to cart
             </button>
-            <button className={s.details}>Details</button>
+            <Link to={`/product/${item.id}`} className={s.details}>Details</Link>
         </div>
       </div>
     </div>

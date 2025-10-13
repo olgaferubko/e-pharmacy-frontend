@@ -11,6 +11,7 @@ import RestrictedRoute from "./components/RestrictedRoute";
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 const StorePage = lazy(() => import("./pages/StoresPage/StoresPage"));
 const MedicinePage = lazy(() => import("./pages/MedicinePage/MedicinePage"));
+const ProductPage = lazy(() => import("./pages/ProductPage/ProductPage"));
 const LoginPage = lazy(() => import("./pages/LoginPage/LoginPage"));
 const RegisterPage = lazy(() => import("./pages/RegisterPage/RegisterPage"));
 const ErrorPage = lazy(() => import("./pages/ErrorPage/ErrorPage"));
@@ -32,7 +33,7 @@ export default function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/store" element={<StorePage />} />
             <Route path="/medicine" element={<MedicinePage />} />
-
+            <Route path="/medicine/:id" element={<ProductPage />} />
 
             <Route
               path="/login"
