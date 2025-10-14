@@ -7,7 +7,7 @@ export default function FilterPanel({
   category,
   onQueryChange,
   onCategoryChange,
-  onFilter,
+  onReset,
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -44,7 +44,8 @@ export default function FilterPanel({
                 className={`${s.dropdownItem} ${
                   category === c ? s.active : ""
                 }`}
-                onClick={() => {
+                onClick={(e) => {
+                  e.stopPropagation();
                   onCategoryChange(c);
                   setIsOpen(false);
                 }}
@@ -70,11 +71,11 @@ export default function FilterPanel({
     />
     </div>
 
-    <button className={s.btn} onClick={onFilter}>
+    <button className={s.btn} onClick={onReset}>
         <svg className={s.filterIcon} id="filter">
             <use href="icons.svg#filter" />
         </svg>
-        Filter
+        Reset
     </button>
     </div>
   );

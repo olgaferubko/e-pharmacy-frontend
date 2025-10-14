@@ -1,16 +1,16 @@
 import React, { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { signupSchema } from "../../validation/signupSchema";
-import s from "./LoginModal.module.css"; 
+import { registerSchema } from "../../validations/registerSchema";
+import s from "../LoginModal/LoginModal.module.css"; 
 
-export default function SignUpModal({ isOpen, onClose, onSubmit }) {
+export default function SignUpModal({ isOpen, onClose, onSubmit, onSwitchToLogin }) {
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
     reset,
-  } = useForm({ mode: "onTouched", resolver: yupResolver(signupSchema) });
+  } = useForm({ mode: "onTouched", resolver: yupResolver(registerSchema) });
 
   const modalRef = useRef(null);
 
@@ -44,7 +44,7 @@ export default function SignUpModal({ isOpen, onClose, onSubmit }) {
       <div className={s.modal} ref={modalRef} onMouseDown={(e) => e.stopPropagation()}>
         <button className={s.closeBtn} type="button" onClick={onClose} aria-label="Close">
           <svg className={s.closeIcon} aria-hidden="true">
-            <use href="/icons.svg#icon-cross" />
+            <use href="/icons.svg#cross" />
           </svg>
         </button>
 
@@ -52,7 +52,6 @@ export default function SignUpModal({ isOpen, onClose, onSubmit }) {
         <p className={s.subtitle}>Before proceeding, please register on our site.</p>
 
         <form className={s.form} onSubmit={handleSubmit(submit)} noValidate>
-          <div className={s.field}>
             <input
               type="text"
               placeholder="User Name"
@@ -60,10 +59,8 @@ export default function SignUpModal({ isOpen, onClose, onSubmit }) {
               className={`${s.input} ${errors.name ? s.inputError : ""}`}
               {...register("name")}
             />
-            {errors.name && <p className={s.error}>{errors.name.message}</p>}
-          </div>
+            {errors.name && <p className={s.err}>{errors.name.message}</p>}
 
-          <div className={s.field}>
             <input
               type="email"
               placeholder="Email address"
@@ -71,10 +68,8 @@ export default function SignUpModal({ isOpen, onClose, onSubmit }) {
               className={`${s.input} ${errors.email ? s.inputError : ""}`}
               {...register("email")}
             />
-            {errors.email && <p className={s.error}>{errors.email.message}</p>}
-          </div>
-
-          <div className={s.field}>
+            {errors.email && <p className={s.err}>{errors.email.message}</p>}
+  
             <input
               type="tel"
               placeholder="Phone number"
@@ -82,10 +77,10 @@ export default function SignUpModal({ isOpen, onClose, onSubmit }) {
               className={`${s.input} ${errors.phone ? s.inputError : ""}`}
               {...register("phone")}
             />
-            {errors.phone && <p className={s.error}>{errors.phone.message}</p>}
-          </div>
+            {errors.phone && <p className={s.err}>{errors.phone.message}</p>}
+    
 
-          <div className={s.field}>
+       
             <input
               type="password"
               placeholder="Password"
@@ -93,15 +88,23 @@ export default function SignUpModal({ isOpen, onClose, onSubmit }) {
               className={`${s.input} ${errors.password ? s.inputError : ""}`}
               {...register("password")}
             />
-            {errors.password && <p className={s.error}>{errors.password.message}</p>}
-          </div>
-
+            {errors.password && <p className={s.err}>{errors.password.message}</p>}
+        </form>
+        <div className={s.wrapper}>
           <button type="submit" disabled={isSubmitting} className={s.submit}>
             {isSubmitting ? "Signing up..." : "Sign Up"}
           </button>
-        </form>
-
-        <div className={s.footerText}>Already have an account?</div>
+          <button
+            type="button"
+            className={s.link}
+            onClick={() => {
+              onClose();
+              onSwitchToLogin?.();
+            }}
+          >
+            Already have an account?
+        </button>
+        </div>
       </div>
     </div>
   );

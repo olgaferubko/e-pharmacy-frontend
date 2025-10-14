@@ -73,7 +73,7 @@
 }
 
 .active {
-    background: #e8f0fe;
+    background: rgba(89, 177, 122, 0.1);
     color: #1d1e21;
 }
 
@@ -169,7 +169,7 @@
 
     .input {
         width: 224px;
-        
+
     }
 }
 

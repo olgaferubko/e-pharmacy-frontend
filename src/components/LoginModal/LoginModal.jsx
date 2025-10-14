@@ -4,7 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "../../validations/loginSchema";
 import s from "./LoginModal.module.css";
 
-export default function LoginModal({ isOpen, onClose, onSubmit }) {
+export default function LoginModal({ isOpen, onClose, onSubmit, onSwitchToSignUp }) {
   const {
     register,
     handleSubmit,
@@ -44,7 +44,7 @@ export default function LoginModal({ isOpen, onClose, onSubmit }) {
       <div className={s.modal} ref={modalRef} onMouseDown={(e) => e.stopPropagation()}>
         <button className={s.closeBtn} type="button" onClick={onClose} aria-label="Close">
           <svg className={s.closeIcon} aria-hidden="true">
-            <use href="/icons.svg#icon-cross" />
+            <use href="/icons.svg#cross" />
           </svg>
         </button>
 
@@ -52,7 +52,6 @@ export default function LoginModal({ isOpen, onClose, onSubmit }) {
         <p className={s.subtitle}>Please login to your account before continuing.</p>
 
         <form className={s.form} onSubmit={handleSubmit(submit)} noValidate>
-          <div className={s.field}>
             <input
               type="email"
               placeholder="Email address"
@@ -60,10 +59,8 @@ export default function LoginModal({ isOpen, onClose, onSubmit }) {
               className={`${s.input} ${errors.email ? s.inputError : ""}`}
               {...register("email")}
             />
-            {errors.email && <p className={s.error}>{errors.email.message}</p>}
-          </div>
+            {errors.email && <p className={s.err}>{errors.email.message}</p>}
 
-          <div className={s.field}>
             <input
               type="password"
               placeholder="Password"
@@ -71,15 +68,23 @@ export default function LoginModal({ isOpen, onClose, onSubmit }) {
               className={`${s.input} ${errors.password ? s.inputError : ""}`}
               {...register("password")}
             />
-            {errors.password && <p className={s.error}>{errors.password.message}</p>}
-          </div>
-
+            {errors.password && <p className={s.err}>{errors.password.message}</p>}
+        </form>
+        <div className={s.wrapper}>
           <button type="submit" disabled={isSubmitting} className={s.submit}>
             {isSubmitting ? "Logging in..." : "Log in"}
           </button>
-        </form>
-
-        <div className={s.footerText}>Don't have an account?</div>
+          <button
+            type="button"
+            className={s.link}
+            onClick={() => {
+              onClose();
+              onSwitchToSignUp?.();
+            }}
+          >
+          Don't have an account?
+          </button>
+        </div>
       </div>
     </div>
   );

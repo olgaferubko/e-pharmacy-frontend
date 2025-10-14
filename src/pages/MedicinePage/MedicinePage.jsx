@@ -22,7 +22,11 @@ export default function MedicinePage() {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("");
   const [loading, setLoading] = useState(true); 
-
+  const handleResetFilters = () => {
+  setQuery("");
+  setCategory("");
+  setPage(1);
+};
   const fetchProducts = useCallback(async () => {
     try {
       setLoading(true); 
@@ -91,6 +95,7 @@ export default function MedicinePage() {
           onQueryChange={setQuery}
           onCategoryChange={setCategory}
           onFilter={fetchProducts}
+          onReset={handleResetFilters}
         />
 
        

@@ -13,8 +13,7 @@
 
 .modal {
     position: relative;
-    width: 100%;
-    max-width: 420px;
+    max-width: 343px;
     border-radius: 20px;
     background: #fff;
     padding: 40px 32px;
@@ -26,10 +25,155 @@
     top: 16px;
     border: none;
     background: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .closeIcon {
     height: 20px;
     width: 20px;
     stroke: #1D1E21;
+}
+
+.title {
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 1.14286;
+    text-align: center;
+    color: #1d1e21;
+    margin-bottom: 14px;
+}
+
+.subtitle {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.28571;
+    text-align: center;
+    color: #6a6a6f;
+    margin-bottom: 25px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+input:-webkit-autofill {
+    -webkit-text-fill-color: #1d1e21;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+input:-webkit-autofill:focus {
+    -webkit-text-fill-color: #1d1e21;
+}
+
+.input {
+    width: 100%;
+    height: 44px;
+    border-radius: 60px;
+    border: 1px solid rgba(29, 30, 33, 0.1);
+    background: #fff;
+    padding: 13px 18px;
+    outline: none;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    color: rgba(29, 30, 33, 0.4);
+}
+
+.input:focus {
+    box-shadow: 0 0 0 3px rgba(89, 177, 122, .15);
+    color: #1d1e21;
+}
+
+input:invalid,
+input:focus:invalid {
+    outline: none;
+    box-shadow: none;
+}
+
+.inputError {
+    font-size: 12px;
+    line-height: 1.5;
+    height: 44px;
+    border: 1px solid rgba(29, 30, 33, 0.1);
+    background: #fff;
+    border-radius: 60px;
+    padding: 13px 18px;
+    outline: none;
+}
+
+.err {
+    color: #ff6b6b;
+    font-size: 12px;
+    line-height: 1.5;
+    margin-left: 18px;
+}
+
+.submit {
+    background: #59b17a;
+    border-radius: 60px;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.28571;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 13px;
+}
+
+.submit:hover {
+    background: #3f945f;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.link {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    color: rgba(29, 30, 33, 0.4);
+    background: none;
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .modal {
+        max-width: 463px;
+        padding: 50px 70px;
+    }
+
+    .closeBtn {
+        right: 20px;
+        top: 20px;
+    }
+
+    .closeIcon {
+        height: 24px;
+        width: 24px;
+    }
+
+    .subtitle {
+        font-size: 16px;
+        line-height: 1.25;
+    }
+
+    .form {
+        gap: 14px;
+    }
 }
