@@ -1,13 +1,16 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
+import { addToCart } from "../../redux/cart/slice";
 import s from "./MedicineItem.module.css";
 
 export default function MedicineItem({ item }) {
+  const dispatch = useDispatch();
   const isAuth = useSelector((s) => s.auth.isLoggedIn);
+
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isSignUpOpen, setIsSignUpOpen] = useState(false);
 
@@ -16,6 +19,8 @@ export default function MedicineItem({ item }) {
       setIsLoginOpen(true);
       return;
     }
+
+    dispatch(addToCart(item));
     toast.success(`${item.name} added to cart!`);
   };
 

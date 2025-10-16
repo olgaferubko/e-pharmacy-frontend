@@ -1,6 +1,8 @@
 import { useState } from "react";
 import clsx from "clsx";
 import { Link, NavLink, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectCartCount } from "../../redux/cart/selectors";
 import RegisterButton from "../RegisterBtn/RegisterBtn";
 import LoginButton from "../LoginBtn/LoginBtn";
 import LogoutButton from "../LogoutBtn/LogoutBtn";
@@ -11,9 +13,13 @@ const Header = ({ isLoggedIn = false, onLogout = () => {} }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { pathname } = useLocation();
 
+  const user = useSelector((s) => s.auth.user);
+  const cartCount = useSelector(selectCartCount);
+  const initial = user?.name ? user.name[0].toUpperCase() : null;
+
   const isHome = pathname === "/";
   const bgClass = isHome ? s.headerHome : s.headerDefault;
-   const logoSrc = isHome ? "/logo.svg" : "/logo-green.svg";
+  const logoSrc = isHome ? "/logo.svg" : "/logo-green.svg";
   const logoTextClass = isHome ? s.logoTextHome : s.logoTextDefault;
   const variant = isHome ? "green" : "white";
   const toggleMenu = () => setIsMenuOpen(v => !v);
@@ -38,17 +44,29 @@ const Header = ({ isLoggedIn = false, onLogout = () => {} }) => {
           <NavLink to="/medicine" className={navLinkClass}>Medicine</NavLink>
         </nav>
 
-        <div className={s.auth}>
-          {isLoggedIn ? (
-            <LogoutButton onLogout={onLogout} variant={variant} />
-          ) : (
-            <>
-              <RegisterButton variant={variant} />
-              <LoginButton variant={variant} />
-            </>
-          )}
-        </div>
+        <div className={s.rightSection}>
 
+          <Link to="/cart" className={s.cartBtn}>
+            <svg className={s.cartIcon} width="16" height="16">
+              <use href="/icons.svg#cart" />
+            </svg>
+            <span className={s.badge}>{cartCount}</span>
+          </Link>
+          {isLoggedIn && (
+            <div className={s.userCircle}>{initial}</div>
+          )}
+
+          <div className={s.auth}>
+            {isLoggedIn ? (
+              <LogoutButton onLogout={onLogout} variant={variant} />
+            ) : (
+              <>
+                <RegisterButton variant={variant} />
+                <LoginButton variant={variant} />
+              </>
+            )}
+          </div>
+          
         <button
           className={s.burger}
           onClick={toggleMenu}
@@ -60,6 +78,8 @@ const Header = ({ isLoggedIn = false, onLogout = () => {} }) => {
             <use href="/icons.svg#menu" />
           </svg>
         </button>
+        </div>
+
       </div>
 
       {isMenuOpen && (

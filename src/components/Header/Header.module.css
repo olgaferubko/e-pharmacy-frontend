@@ -43,10 +43,67 @@
 
 .nav {
     display: none;
-    }
+}
+
+.rightSection {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
 
 .auth {
     display: none;
+}
+
+.cartBtn {
+    position: relative;
+    border-radius: 100%;
+    background: #fff;
+    stroke-width: 1px;
+    border: 1px solid #f1f1f1;
+    box-shadow: 0 -1px 7px 0 rgba(71, 71, 71, 0.05);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cartIcon {
+    stroke: #59b17a;
+    fill: none;
+}
+
+.badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #e7f1ed;
+    color: #59b17a;
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.userCircle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #e8f5ee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #59b17a;
 }
 
 .burger  {
@@ -60,8 +117,7 @@
 
 .burgerIcon {
     width: 32px;
-    height: 26px;
-    
+    height: 26px; 
 }
 
 .burgerIconLight {
@@ -117,17 +173,17 @@
     }
     
     .nav::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 50%;
-    height: 15px;
-    transform: translateY(-50%);
-    background: #fff;
-    border: 1px solid #f1f1f1;
-    border-radius: 8px;
-    z-index: 1;
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 50%;
+        height: 15px;
+        transform: translateY(-50%);
+        background: #fff;
+        border: 1px solid #f1f1f1;
+        border-radius: 8px;
+        z-index: 1;
     }
 
     .auth {
