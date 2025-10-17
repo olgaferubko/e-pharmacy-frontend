@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../../redux/auth/operations";
 import { selectIsLoggedIn } from "../../redux/auth/selectors";
-import Header from "../../components/Header/Header"
+import Header from "../../components/Header/Header";
 import MainBanner from "../../components/MainBanner/MainBanner";
 import PromoBanner from "../../components/PromoBanner/PromoBanner";
 import NearestStores from "../../components/NearestStores/NearestStores";

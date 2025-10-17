@@ -1,0 +1,584 @@
+.page {
+    padding: 59px 20px 80px;
+    background: #f7f8fa;
+}
+
+.title {
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 1.14286;
+    color: #1d1e21;
+    margin: 0 auto;
+    margin-bottom: 40px;
+    max-width: 320px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.formSection {
+    background: #fff;
+    border-radius: 27px;
+    padding: 20px 20px 40px;
+}
+
+.formTitle {
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.4;
+    color: #1d1e21;
+    margin-bottom: 12px;
+}
+
+.formText {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.28571;
+    color: #6a6a6f;
+    margin-bottom: 40px;
+}
+
+.inputGroupWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.label {
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.28571;
+    color: #1d1e21;
+    margin-left: 18px;
+}
+
+.input {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    color: rgba(29, 30, 33, 0.6);
+    width: 100%;
+    padding: 13px 18px;
+    border: 1px solid rgba(29, 30, 33, 0.2);
+    border-radius: 60px;
+    outline: none;
+}
+
+.input:focus {
+    box-shadow: 0 0 0 3px rgba(89, 177, 122, .15);
+    color: #1d1e21;
+}
+
+input:invalid,
+input:focus:invalid {
+    outline: none;
+    box-shadow: none;
+}
+
+.inputError {
+    font-size: 12px;
+    line-height: 1.5;
+    height: 44px;
+    border: 1px solid rgba(29, 30, 33, 0.1);
+    background: #fff;
+    border-radius: 60px;
+    padding: 13px 18px;
+    outline: none;
+}
+
+.err {
+    color: #ff6b6b;
+    font-size: 12px;
+    line-height: 1.5;
+    margin-left: 18px;
+}
+
+.wrapper {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    border-top: 1px solid rgba(29, 30, 33, 0.1);
+    border-bottom: 1px solid rgba(29, 30, 33, 0.1);
+}
+
+.paywentTitle {
+    margin-top: 38px;
+    margin-bottom: 12px;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.4;
+    color: #1d1e21;
+}
+
+.paymentText {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.28571;
+    color: #6a6a6f;
+    margin-bottom: 20px;
+}
+
+.paymentOptions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 40px;
+}
+
+.radioLabel {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    color: #1d1e21;
+}
+
+.radioLabel input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.radioLabel input[type="radio"]:hover {
+    border-color: #59b17a;
+}
+
+.radioLabel input[type="radio"]:checked {
+    border-color: #59b17a;
+}
+
+.radioLabel input[type="radio"]:checked::before {
+    content: "";
+    position: absolute;
+    top: 3.5px;
+    left: 3.5px;
+    width: 10px;
+    height: 10px;
+    background-color: #59b17a;
+    border-radius: 50%;
+}
+
+.paymentOptions input[type="radio"] {
+    accent-color: #59b17a;
+    width: 20px;
+    height: 20px;
+}
+
+.details {
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.4;
+    color: #1d1e21;
+    margin-bottom: 12px;
+}
+
+.detailsText {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.28571;
+    color: #6a6a6f;
+    margin-bottom: 20px;
+}
+
+.totalBox {
+    background: #e7f1ed;
+    padding: 14px 18px;
+    border-radius: 8px;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.4;
+    color: #1d1e21;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.placeOrder {
+    background: #59b17a;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.28571;
+    color: #fff;
+    border: none;
+    border-radius: 60px;
+    padding: 13px 32px;
+}
+
+.placeOrder:hover {
+    background: #3f945f;
+}
+
+.itemsSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 80px;
+}
+
+.empty {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.28571;
+    color: #6a6a6f;
+    text-align: center;
+}
+
+.itemCard {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.itemCard:not(:last-child) {
+    border-bottom: 1px solid rgba(29, 30, 33, 0.1);
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.image {
+    width: 100px;
+    height: 100px;
+    border: 1.15px solid #f1f1f1;
+    border-radius: 27px;
+    object-fit: cover;
+}
+
+.itemInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.titleBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 12px;
+}
+
+.name {
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.4;
+    color: #1d1e21;
+}
+
+.suppliers {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.16667;
+    color: #6a6a6f;
+}
+
+.price {
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.16667;
+    text-align: right;
+    color: #1d1e21;
+    margin-bottom: 8px;
+    text-align: start;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #f7f8fa;
+    border: 1px solid rgba(29, 30, 33, 0.1);
+    border-radius: 60px;
+    justify-content: center;
+    padding: 0 10px;
+    height: 32px;
+}
+
+.quantityBtn {
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.iconQuantity {
+    stroke: #59b17a;
+    fill: none;
+}
+
+.number {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.42857;
+    text-align: center;
+    color: #1d1e21;
+}
+
+.removeBtn {
+    width: 80px;
+    text-align: center;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: -0.05em;
+    text-align: center;
+    border: none;
+    background: rgba(232, 80, 80, 0.1);
+    color: #e85050;
+    padding: 8px;
+    border-radius: 40px;
+}
+
+.removeBtn:hover {
+    background: #e85050;
+    color: #fff
+}
+
+@media (min-width: 375px) {
+    .title {
+        max-width: 335px;
+    }
+
+    .container {
+        width: 335px;
+    }
+
+    .itemCard {
+        gap: 12px;
+    }
+
+    .image {
+        width: 120px;
+        height: 120px;
+    }
+
+    .titleBlock {
+        gap: 8px;
+    }
+
+    .price {
+        margin-bottom: 18px;
+    }
+
+    .quantity {
+        padding: 0 12px;
+        gap: 12px;
+    }
+
+    .removeBtn {
+        width: 89px;
+    }
+}
+
+@media (min-width: 768px) {
+    .page {
+        padding: 78px 32px 120px;
+    }
+
+    .title {
+        max-width: 704px;
+        margin-bottom: 32px;
+    }
+
+    .container {
+        width: 704px;
+    }
+
+    .formSection {
+        padding: 40px 78px;
+    }
+
+    .formTitle {
+        font-size: 20px;
+        margin-bottom: 14px;
+    }
+
+    .formText {
+        font-size: 16px;
+        line-height: 1.25;
+    }
+
+    .inputGroupWrapper {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 32px 14px;
+    }
+
+    .inputGroup {
+        width: 296px;
+    }
+
+    .paywentTitle {
+        margin-top: 40px;
+        margin-bottom: 14px;
+        font-size: 20px;
+    }
+
+    .paymentText {
+        font-size: 16px;
+        line-height: 1.25;
+    }
+
+    .paymentOptions {
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+    }
+
+    .details {
+        font-size: 20px;
+        margin-bottom: 14px;
+    }
+
+    .detailsText {
+        font-size: 16px;
+        line-height: 1.25;
+    }
+
+    .totalBox {
+        padding: 20px;
+        font-size: 18px;
+    }
+
+    .itemsSection {
+        margin-top: 64px;
+    }
+
+    .empty {
+        font-size: 16px;
+    }
+
+    .itemCard {
+        width: 100%;
+        gap: 20px;
+    }
+
+    .image {
+        width: 122px;
+        height: 133px;
+    }
+
+    .itemInfo {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .wrapperCard {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 38px;
+    }
+
+    .titleBlock {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 0px;
+    }
+
+    .name {
+        font-size: 18px;
+    }
+
+    .suppliers {
+        font-size: 14px;
+        line-height: 1.28571;
+    }
+
+    .price {
+        font-size: 14px;
+        line-height: 1.28571;
+        margin-bottom: 0px;
+    }
+
+    .quantity {
+        padding: 0 18px;
+        height: 44px;
+    }
+
+    .number {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+}
+
+@media (min-width: 1440px) {
+    .page {
+        padding: 98px 32px 120px;
+    }
+
+    .title {
+        max-width: 1264px;
+        margin-bottom: 40px;
+    }
+
+    .container {
+        width: 1264px;
+        flex-direction: row;
+        gap: 96px;
+    }
+
+    .formSection {
+        max-width: 708px;
+        padding: 40px;
+    }
+
+    .inputGroupWrapper {
+        gap: 20px 14px;
+    }
+
+    .itemsSection {
+        width: 100%;
+    }
+
+    .itemCard {
+        width: 100%;
+        gap: 20px;
+    }
+
+    .image {
+        width: 122px;
+        height: 133px;
+    }
+
+    .itemInfo {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+}

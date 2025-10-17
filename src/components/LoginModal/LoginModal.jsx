@@ -1,18 +1,22 @@
 import React, { useEffect, useRef } from "react";
+import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import toast from "react-hot-toast";
 import { loginSchema } from "../../validations/loginSchema";
+import { logIn } from "../../redux/auth/operations";
 import s from "./LoginModal.module.css";
 
-export default function LoginModal({ isOpen, onClose, onSubmit, onSwitchToSignUp }) {
+export default function LoginModal({ isOpen, onClose, onSwitchToSignUp }) {
+  const dispatch = useDispatch();
+  const modalRef = useRef(null);
+
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
     reset,
   } = useForm({ mode: "onTouched", resolver: yupResolver(loginSchema) });
-
-  const modalRef = useRef(null);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -33,11 +37,17 @@ export default function LoginModal({ isOpen, onClose, onSubmit, onSwitchToSignUp
     if (e.target === e.currentTarget) onClose();
   };
 
-  if (!isOpen) return null;
-
-  const submit = async (data) => {
-    await Promise.resolve(onSubmit?.(data));
+  const submit = async (values) => {
+    try {
+      await dispatch(logIn(values)).unwrap();
+      toast.success("Login successful!");
+      onClose();
+    } catch (err) {
+      toast.error(typeof err === "string" ? err : "Login failed");
+    }
   };
+
+  if (!isOpen) return null;
 
   return (
     <div className={s.backdrop} onMouseDown={onBackdrop} role="dialog" aria-modal="true">
@@ -52,39 +62,40 @@ export default function LoginModal({ isOpen, onClose, onSubmit, onSwitchToSignUp
         <p className={s.subtitle}>Please login to your account before continuing.</p>
 
         <form className={s.form} onSubmit={handleSubmit(submit)} noValidate>
-            <input
-              type="email"
-              placeholder="Email address"
-              autoComplete="email"
-              className={`${s.input} ${errors.email ? s.inputError : ""}`}
-              {...register("email")}
-            />
-            {errors.email && <p className={s.err}>{errors.email.message}</p>}
+          <input
+            type="email"
+            placeholder="Email address"
+            autoComplete="email"
+            className={`${s.input} ${errors.email ? s.inputError : ""}`}
+            {...register("email")}
+          />
+          {errors.email && <p className={s.err}>{errors.email.message}</p>}
 
-            <input
-              type="password"
-              placeholder="Password"
-              autoComplete="current-password"
-              className={`${s.input} ${errors.password ? s.inputError : ""}`}
-              {...register("password")}
-            />
-            {errors.password && <p className={s.err}>{errors.password.message}</p>}
+          <input
+            type="password"
+            placeholder="Password"
+            autoComplete="current-password"
+            className={`${s.input} ${errors.password ? s.inputError : ""}`}
+            {...register("password")}
+          />
+          {errors.password && <p className={s.err}>{errors.password.message}</p>}
+
+          <div className={s.wrapper}>
+            <button type="submit" disabled={isSubmitting} className={s.submit}>
+              {isSubmitting ? "Logging in..." : "Log in"}
+            </button>
+            <button
+              type="button"
+              className={s.link}
+              onClick={() => {
+                onClose();
+                onSwitchToSignUp?.();
+              }}
+            >
+              Don't have an account?
+            </button>
+          </div>
         </form>
-        <div className={s.wrapper}>
-          <button type="submit" disabled={isSubmitting} className={s.submit}>
-            {isSubmitting ? "Logging in..." : "Log in"}
-          </button>
-          <button
-            type="button"
-            className={s.link}
-            onClick={() => {
-              onClose();
-              onSwitchToSignUp?.();
-            }}
-          >
-          Don't have an account?
-          </button>
-        </div>
       </div>
     </div>
   );

@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { refresh } from "./redux/auth/operations";
 import { selectIsRefreshing } from "./redux/auth/selectors";
 
-import Header from "./components/Header/Header";
 import Loader from "./components/Loader/Loader";
 import RestrictedRoute from "./components/RestrictedRoute";
 
@@ -15,6 +14,7 @@ const ProductPage = lazy(() => import("./pages/ProductPage/ProductPage"));
 const LoginPage = lazy(() => import("./pages/LoginPage/LoginPage"));
 const RegisterPage = lazy(() => import("./pages/RegisterPage/RegisterPage"));
 const ErrorPage = lazy(() => import("./pages/ErrorPage/ErrorPage"));
+const CartPage = lazy (() =>import ("./pages/CartPage/CartPage"));
 
 export default function App() {
   const dispatch = useDispatch();
@@ -34,7 +34,8 @@ export default function App() {
             <Route path="/store" element={<StorePage />} />
             <Route path="/medicine" element={<MedicinePage />} />
             <Route path="/product/:id" element={<ProductPage />} />
-
+            <Route path="/cart" element={<CartPage />} />
+            
             <Route
               path="/login"
               element={
