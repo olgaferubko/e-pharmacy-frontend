@@ -250,6 +250,10 @@
     display: flex;
     align-items: center;
     gap: 6px;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.28571;
 }
 
 .star {
@@ -348,6 +352,10 @@
         display: flex;
         align-items: center;
         gap: 2px;
+        font-family: "Inter", sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.28571;
     }
 }
 

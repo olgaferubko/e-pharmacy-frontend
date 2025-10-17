@@ -8,7 +8,7 @@ import desk1x from "/images/elements-desktop.png";
 import desk2x from "/images/elements-desktop@2x.png";
 
 const api = axios.create({
-  baseURL: "https://e-pharmacy-backend.onrender.com/api",
+  baseURL: "https://e-pharmacy-backend-bad9.onrender.com/api",
   headers: { Accept: "application/json" },
   withCredentials: false,
 });
@@ -25,10 +25,13 @@ export default function Stores() {
         setLoading(true);
         setError("");
         const { data } = await api.get("/stores");
-        const list = Array.isArray(data) ? data : Array.isArray(data?.data) ? data.data : [];
-        if (alive) setStores(list.slice(0, 9));
+        if (alive) {
+          const list = data?.data || [];
+          setStores(list.slice(0, 9));
+        }
       } catch (e) {
-        if (alive) setError(e?.response?.data?.message || e.message || "Request failed");
+        if (alive)
+          setError(e?.response?.data?.message || e.message || "Request failed");
       } finally {
         if (alive) setLoading(false);
       }

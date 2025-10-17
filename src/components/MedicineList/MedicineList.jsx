@@ -5,7 +5,7 @@ export default function MedicineList({ items }) {
   return (
     <div className={s.list}>
       {items.map((item) => (
-        <MedicineItem key={item.id} item={item} />
+        <MedicineItem key={item._id} item={item} />
       ))}
     </div>
   );

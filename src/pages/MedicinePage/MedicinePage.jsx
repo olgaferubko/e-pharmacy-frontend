@@ -13,7 +13,9 @@ import s from "./MedicinePage.module.css";
 export default function MedicinePage() {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  const handleLogout = () => { dispatch(logOut()); };
+  const handleLogout = () => {
+    dispatch(logOut());
+  };
 
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -21,15 +23,17 @@ export default function MedicinePage() {
   const [totalPages, setTotalPages] = useState(1);
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("");
-  const [loading, setLoading] = useState(true); 
+  const [loading, setLoading] = useState(true);
+
   const handleResetFilters = () => {
-  setQuery("");
-  setCategory("");
-  setPage(1);
-};
+    setQuery("");
+    setCategory("");
+    setPage(1);
+  };
+
   const fetchProducts = useCallback(async () => {
     try {
-      setLoading(true); 
+      setLoading(true);
       const { data } = await axios.get(
         "https://e-pharmacy-backend-bad9.onrender.com/api/products",
         {
@@ -47,13 +51,14 @@ export default function MedicinePage() {
         }
       );
 
-      setProducts(data.data || []);
-      setTotalPages(data.meta?.totalPages || 1);
+      const list = data.products || data.data || [];
+      setProducts(list);
+      setTotalPages(data.totalPages || data.meta?.totalPages || 1);
     } catch (err) {
       console.error("Products fetch failed:", err.response?.data || err.message);
       setProducts([]);
     } finally {
-      setLoading(false); 
+      setLoading(false);
     }
   }, [page, query, category]);
 
@@ -98,7 +103,6 @@ export default function MedicinePage() {
           onReset={handleResetFilters}
         />
 
-       
         {loading ? (
           <p className={s.loading}>Loading...</p>
         ) : products.length === 0 ? (

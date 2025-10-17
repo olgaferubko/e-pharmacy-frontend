@@ -8,15 +8,15 @@ import desk1x from "/images/elements-desktop.png";
 import desk2x from "/images/elements-desktop@2x.png";
 
 const api = axios.create({
-  baseURL: "https://e-pharmacy-backend.onrender.com/api",
+  baseURL: "https://e-pharmacy-backend-bad9.onrender.com/api",
   headers: { Accept: "application/json" },
   withCredentials: false,
 });
 
 export default function NearestStores() {
-  const [stores, setStores]   = useState([]);
+  const [stores, setStores] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError]     = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
     let alive = true;
@@ -25,15 +25,20 @@ export default function NearestStores() {
         setLoading(true);
         setError("");
         const { data } = await api.get("/stores/nearest");
-        const list = Array.isArray(data) ? data : Array.isArray(data?.data) ? data.data : [];
+
+        const list = data?.data || [];
         if (alive) setStores(list.slice(0, 6));
       } catch (e) {
-        if (alive) setError(e?.response?.data?.message || e.message || "Request failed");
+        if (alive)
+          setError(e?.response?.data?.message || e.message || "Request failed");
       } finally {
         if (alive) setLoading(false);
       }
     })();
-    return () => { alive = false; };
+
+    return () => {
+      alive = false;
+    };
   }, []);
 
   return (

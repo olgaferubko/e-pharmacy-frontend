@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-axios.defaults.baseURL = "https://e-pharmacy-backend.onrender.com/api";
+axios.defaults.baseURL = "https://e-pharmacy-backend-bad9.onrender.com/api";
 
 
 const authApi = axios.create({
@@ -94,12 +94,10 @@ export const logOut = createAsyncThunk(
       await authApi.post(ENDPOINTS.logout).catch(() => {});
       token.unset();
       localStorage.removeItem("auth_token");
-      localStorage.removeItem("favorites");
       return true;
     } catch (e) {
       token.unset();
       localStorage.removeItem("auth_token");
-      localStorage.removeItem("favorites");
       return rejectWithValue(errMsg(e));
     }
   }

@@ -3,7 +3,7 @@ import axios from "axios";
 import s from "./Reviews.module.css";
 
 const api = axios.create({
-  baseURL: "https://e-pharmacy-backend.onrender.com/api",
+  baseURL: "https://e-pharmacy-backend-bad9.onrender.com/api",
   headers: { Accept: "application/json" },
   withCredentials: false,
 });
