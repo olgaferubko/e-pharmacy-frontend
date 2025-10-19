@@ -18,7 +18,7 @@ export default function RegisterPage() {
       try {
         await dispatch(registerThunk(values)).unwrap();
         toast.success("Registration successful!");
-        navigate("/");
+        navigate("/medicine");
       } catch (err) {
         toast.error(typeof err === "string" ? err : "Registration failed");
       } finally {

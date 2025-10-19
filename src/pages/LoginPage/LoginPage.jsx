@@ -18,7 +18,7 @@ export default function LoginPage() {
       try {
         await dispatch(logIn(values)).unwrap();
         toast.success("Login successful!");
-        navigate("/");
+        navigate("/medicine");
       } catch (err) {
         toast.error(typeof err === "string" ? err : "Login failed");
       } finally {

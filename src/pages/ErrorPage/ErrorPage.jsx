@@ -13,6 +13,8 @@ export default function ErrorPage() {
     <section className={s.page}>
       <div className={s.container}>
         <Header isLoggedIn={isLoggedIn} onLogout={handleLogout} />
+          <h2 className={s.notFound}>Page not found!</h2>
+          <p className={s.return}>Please return to the home page</p>
       </div>
     </section>
   );

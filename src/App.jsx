@@ -5,8 +5,8 @@ import { refresh } from "./redux/auth/operations";
 import { selectIsRefreshing } from "./redux/auth/selectors";
 
 import Loader from "./components/Loader/Loader";
-import PrivateRoute from "./components/RestrictedRoute";
-import RestrictedRoute from "./components/PrivateRoute";
+import PrivateRoute from "./components/PrivateRoute";
+import RestrictedRoute from "./components/RestrictedRoute";
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 const StorePage = lazy(() => import("./pages/StoresPage/StoresPage"));
@@ -24,7 +24,6 @@ export default function App() {
   useEffect(() => { dispatch(refresh()); }, [dispatch]);
 
   if (isRefreshing) return <Loader />;
-
 
   return (
     <>

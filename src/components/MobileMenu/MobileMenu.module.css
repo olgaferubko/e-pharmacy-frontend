@@ -1,3 +1,12 @@
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: flex-end;
+    z-index: 999;
+}
+
 .menu {
     position: fixed;
     top: 0;

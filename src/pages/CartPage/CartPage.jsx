@@ -44,6 +44,7 @@ export default function CartPage() {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors, isSubmitting },
   } = useForm({
     resolver: yupResolver(schema),
@@ -59,34 +60,49 @@ export default function CartPage() {
 
   const paymentValue = watch("payment");
 
-  const handlePlaceOrder = async (values) => {
-    if (!token) {
-      toast.error("Please log in to place your order.");
-      return;
-    }
-    if (items.length === 0) {
-      toast.error("Your cart is empty");
-      return;
-    }
+ const handlePlaceOrder = async (values) => {
+  if (!token) {
+    toast.error("Please log in to place your order.");
+    return;
+  }
+  if (items.length === 0) {
+    toast.error("Your cart is empty");
+    return;
+  }
 
-    try {
-      const res = await axios.post(
-        "https://e-pharmacy-backend-bad9.onrender.com/api/cart/checkout",
-        { ...values, items, total },
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
+  try {
+    await axios.put(
+      "https://e-pharmacy-backend-bad9.onrender.com/api/cart/update",
+      {
+        items: items.map((i) => ({
+          productId: i._id || i.id,
+          quantity: i.quantity || 1,
+        })),
+      },
+      { headers: { Authorization: `Bearer ${token}` }, withCredentials: true }
+    );
 
-      console.log("Order success:", res.data);
-      toast.success("Order placed successfully!");
-    } catch (error) {
-      console.error("Checkout error:", error.response?.data || error.message);
-      if (error.response?.status === 401) {
-        toast.error("Your session has expired. Please log in again.");
-      } else {
-        toast.error("Failed to place order.");
-      }
+    const res = await axios.post(
+      "https://e-pharmacy-backend-bad9.onrender.com/api/cart/checkout",
+      values, 
+      { headers: { Authorization: `Bearer ${token}` }, withCredentials: true }
+    );
+
+    console.log("Order success:", res.data);
+    toast.success("Order placed successfully!");
+
+    reset(); 
+    dispatch({ type: "cart/clearCart" }); 
+
+  } catch (error) {
+    console.error("Checkout error:", error.response?.data || error.message);
+    if (error.response?.status === 401) {
+      toast.error("Your session has expired. Please log in again.");
+    } else {
+      toast.error("Failed to place order.");
     }
-  };
+  }
+};
 
   return (
     <>
