@@ -5,7 +5,8 @@ import { refresh } from "./redux/auth/operations";
 import { selectIsRefreshing } from "./redux/auth/selectors";
 
 import Loader from "./components/Loader/Loader";
-import RestrictedRoute from "./components/RestrictedRoute";
+import PrivateRoute from "./components/RestrictedRoute";
+import RestrictedRoute from "./components/PrivateRoute";
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 const StorePage = lazy(() => import("./pages/StoresPage/StoresPage"));
