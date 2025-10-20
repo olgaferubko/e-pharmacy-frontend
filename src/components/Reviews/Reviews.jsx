@@ -40,7 +40,7 @@ export default function ReviewsSection() {
   }, []);
 
   return (
-    <section className={s.section} aria-labelledby="reviews-title">
+    <section id="reviews" className={s.section} aria-labelledby="reviews-title">
       <div className={s.header}>
         <h2 id="reviews-title" className={s.title}>Reviews</h2>
         <p className={s.desc}>Search for Medicine, Filter by your location</p>

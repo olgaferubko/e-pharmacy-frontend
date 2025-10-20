@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 import s from "./PromoBanner.module.css";
 
 export default function PromoBanner() {
@@ -19,7 +19,7 @@ export default function PromoBanner() {
                     </div>
                     <div className={s.valueConatiner}>
                         <p className={s.value}>{value}</p>
-                        <Link className={s.cta} to={to}>{cta}</Link>
+                        <HashLink smooth to={to} className={s.cta}>{cta}</HashLink>
                     </div>
                 </article>
             ))}
