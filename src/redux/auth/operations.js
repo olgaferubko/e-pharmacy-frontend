@@ -103,20 +103,33 @@ export const refresh = createAsyncThunk(
   "auth/refresh",
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = await authApi.get(ENDPOINTS.refresh);
-      const t = data?.data?.accessToken || data?.accessToken || null;
+      const { data } = await authApi.get("/user/refresh", {
+        withCredentials: true,
+      });
+
+      const t =
+        data?.data?.accessToken || data?.accessToken || null;
 
       if (!t) throw new Error("No access token");
 
       token.set(t);
       localStorage.setItem("auth_token", t);
 
-      const user = pickUser(data);
+      const user =
+        data?.data?.user ||
+        data?.user ||
+        JSON.parse(localStorage.getItem("auth_user") || "{}");
+
+      localStorage.setItem("auth_user", JSON.stringify(user));
+
       return { user, token: t };
     } catch (e) {
       token.unset();
       localStorage.removeItem("auth_token");
-      return rejectWithValue(errMsg(e));
+      localStorage.removeItem("auth_user");
+      return rejectWithValue(
+        e?.response?.data?.message || e.message || "Error"
+      );
     }
   }
 );
