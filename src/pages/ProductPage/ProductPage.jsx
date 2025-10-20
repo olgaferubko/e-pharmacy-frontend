@@ -9,6 +9,8 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
+import LoginModal from "../../components/LoginModal/LoginModal";
+import RegisterModal from "../../components/RegisterModal/RegisterModal";
 import s from "./ProductPage.module.css";
 
 export default function ProductPage() {
@@ -21,6 +23,9 @@ export default function ProductPage() {
   const [reviews, setReviews] = useState([]);
   const [tab, setTab] = useState("description");
   const [loading, setLoading] = useState(true);
+
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [isSignUpOpen, setIsSignUpOpen] = useState(false);
 
   const items = useSelector(selectCartItems);
   const cartItem = items.find((i) => i.id === product?._id || i.id === product?.id);
@@ -48,8 +53,31 @@ export default function ProductPage() {
   if (loading || !product) return <p className={s.loading}>Loading...</p>;
 
   const handleAddToCart = () => {
+    if (!isLoggedIn) {
+      setIsLoginOpen(true);
+      return;
+    }
+
     dispatch(addToCart(product));
     toast.success(`${product.name} added to cart!`);
+  };
+
+  const handleIncrease = () => {
+    if (!isLoggedIn) {
+      setIsLoginOpen(true);
+      return;
+    }
+
+    dispatch(addToCart(product));
+  };
+
+  const handleDecrease = () => {
+    if (!isLoggedIn) {
+      setIsLoginOpen(true);
+      return;
+    }
+
+    dispatch(decreaseQuantity(product._id || product.id));
   };
 
   return (
@@ -70,10 +98,7 @@ export default function ProductPage() {
 
             <div className={s.actions}>
               <div className={s.quantity}>
-                <button
-                  className={s.quantityBtn}
-                  onClick={() => dispatch(addToCart(product))}
-                >
+                <button className={s.quantityBtn} onClick={handleIncrease}>
                   <svg className={s.iconQuantity} width="20" height="20" aria-hidden="true">
                     <use href="/icons.svg#plus" />
                   </svg>
@@ -81,10 +106,7 @@ export default function ProductPage() {
 
                 <span className={s.number}>{quantity}</span>
 
-                <button
-                  className={s.quantityBtn}
-                  onClick={() => dispatch(decreaseQuantity(product._id || product.id))}
-                >
+                <button className={s.quantityBtn} onClick={handleDecrease}>
                   <svg className={s.iconQuantity} width="20" height="20" aria-hidden="true">
                     <use href="/icons.svg#minus" />
                   </svg>
@@ -178,26 +200,18 @@ export default function ProductPage() {
                       </div>
 
                       <p className={s.rating}>
-                        <span className={s.mobileRating}>
-                          <svg className={s.star} width="16" height="16" aria-hidden="true">
+                        {[...Array(5)].map((_, index) => (
+                          <svg
+                            key={index}
+                            className={`${s.star} ${index < r.rating ? s.filled : s.empty}`}
+                            width="16"
+                            height="16"
+                            aria-hidden="true"
+                          >
                             <use href="/icons.svg#star" />
                           </svg>
-                          {r.rating}
-                        </span>
-                        <span className={s.desktopRating}>
-                          {[...Array(5)].map((_, index) => (
-                            <svg
-                              key={index}
-                              className={`${s.star} ${index < r.rating ? s.filled : s.empty}`}
-                              width="16"
-                              height="16"
-                              aria-hidden="true"
-                            >
-                              <use href="/icons.svg#star" />
-                            </svg>
-                          ))}
-                          <span className={s.ratingNumber}> {r.rating}</span>
-                        </span>
+                        ))}
+                        <span className={s.ratingNumber}> {r.rating}</span>
                       </p>
                     </div>
                     <p className={s.comment}>{r.comment || r.review}</p>
@@ -210,7 +224,26 @@ export default function ProductPage() {
           )}
         </section>
       </main>
+
       <Footer />
+
+      <LoginModal
+        isOpen={isLoginOpen}
+        onClose={() => setIsLoginOpen(false)}
+        onSwitchToSignUp={() => {
+          setIsLoginOpen(false);
+          setIsSignUpOpen(true);
+        }}
+      />
+
+      <RegisterModal
+        isOpen={isSignUpOpen}
+        onClose={() => setIsSignUpOpen(false)}
+        onSwitchToLogin={() => {
+          setIsSignUpOpen(false);
+          setIsLoginOpen(true);
+        }}
+      />
     </>
   );
 }
