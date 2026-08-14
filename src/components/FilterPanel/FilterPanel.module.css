@@ -58,8 +58,13 @@
     margin-top: 4px;
     max-height: 220px;
     overflow-y: auto;
+    scrollbar-width: none;
     z-index: 10;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dropdownList::-webkit-scrollbar {
+    display: none;
 }
 
 .dropdownItem {

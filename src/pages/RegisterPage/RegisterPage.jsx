@@ -68,6 +68,7 @@ export default function RegisterPage() {
           </h1>
 
         <form className={s.form} onSubmit={formik.handleSubmit}>
+          <div className={s.field}>
           <input
             type="text"
             name="name"
@@ -77,7 +78,9 @@ export default function RegisterPage() {
             className={formik.errors.name && formik.touched.name ? s.inputError : s.input}
           />
           {formik.touched.name && formik.errors.name && <p className={s.err}>{formik.errors.name}</p>}
+          </div>
 
+          <div className={s.field}>
           <input
             type="email"
             name="email"
@@ -87,7 +90,9 @@ export default function RegisterPage() {
             className={formik.errors.email && formik.touched.email ? s.inputError : s.input}
           />
           {formik.touched.email && formik.errors.email && <p className={s.err}>{formik.errors.email}</p>}
+          </div>
 
+          <div className={s.field}>
           <input
             type="tel"
             name="phone"
@@ -97,7 +102,9 @@ export default function RegisterPage() {
             className={formik.errors.phone && formik.touched.phone ? s.inputError : s.input}
           />
           {formik.touched.phone && formik.errors.phone && <p className={s.err}>{formik.errors.phone}</p>}
+          </div>
 
+          <div className={s.field}>
           <input
             type="password"
             name="password"
@@ -107,6 +114,7 @@ export default function RegisterPage() {
             className={formik.errors.password && formik.touched.password ? s.inputError : s.input}
           />
           {formik.touched.password && formik.errors.password && <p className={s.err}>{formik.errors.password}</p>}
+          </div>
 
           <div className={s.wrapper}>
             <button type="submit" className={s.btn} disabled={formik.isSubmitting}>
